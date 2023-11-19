@@ -1,32 +1,102 @@
-# Prerequisites
-*.d
+#include <iostream>
+#include <iomanip>
+#include <cmath>
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+using namespace std;
 
-# Precompiled Headers
-*.gch
-*.pch
+const double PI = 3.1415;
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+class FormaGeometrica {
+public:
+    virtual void lerDados() = 0;
+    virtual void calcularArea() = 0;
+    virtual void mostrarResultado() const = 0;
+};
 
-# Fortran module files
-*.mod
-*.smod
+class Quadrado : public FormaGeometrica {
+private:
+    double lado;
+    double area;
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+public:
+    void lerDados() override {
+        cin >> lado;
+    }
 
-# Executables
-*.exe
-*.out
-*.app
+    void calcularArea() override {
+        area = lado * lado;
+    }
+
+    void mostrarResultado() const override {
+        cout << "quadrado " << fixed << setprecision(2) << lado << " x " << lado << " " << fixed << setprecision(2) << area << endl;
+    }
+};
+
+class Retangulo : public FormaGeometrica {
+private:
+    double base;
+    double altura;
+    double area;
+
+public:
+    void lerDados() override {
+        cin >> base >> altura;
+    }
+
+    void calcularArea() override {
+        area = base * altura;
+    }
+
+    void mostrarResultado() const override {
+        cout << "retangulo " << fixed << setprecision(2) << base << " x " << altura << " " << fixed << setprecision(2) << area << endl;
+    }
+};
+
+class Circulo : public FormaGeometrica {
+private:
+    double raio;
+    double area;
+
+public:
+    void lerDados() override {
+        cin >> raio;
+    }
+
+    void calcularArea() override {
+        area = PI * raio * raio;
+    }
+
+    void mostrarResultado() const override {
+        cout << "circulo " << fixed << setprecision(2) << raio << " " << fixed << setprecision(2) << area << endl;
+    }
+};
+
+int main() {
+    int n;
+    cin >> n;
+
+    FormaGeometrica* formas[100];
+
+    for (int i = 0; i < n; ++i) {
+        string tipo;
+        cin >> tipo;
+
+        if (tipo == "quadrado") {
+            formas[i] = new Quadrado();
+        } else if (tipo == "retangulo") {
+            formas[i] = new Retangulo();
+        } else if (tipo == "circulo") {
+            formas[i] = new Circulo();
+        }
+
+        formas[i]->lerDados();
+        formas[i]->calcularArea();
+    }
+
+    for (int i = 0; i < n; ++i) {
+        formas[i]->mostrarResultado();
+        delete formas[i];
+    }
+
+    return 0;
+}
