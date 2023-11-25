@@ -1,0 +1,18 @@
+console.log(typeof false);
+
+console.log("*****************");
+
+console.log(false);
+console.log(true);
+
+console.log("*****************");
+
+console.log(1 === 2);
+// Dessa maneira significa que é falso!
+console.log(2 === 2);
+// Dessa maneira significa que é verdadeiro!
+
+
+/*
+    Boolean é verdadeiro ou falso (true/false)
+*/
