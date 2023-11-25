@@ -1,0 +1,21 @@
+Subtração em JavaScript
+
+console.log(2040 - 1920);
+console.log("10" - 6); // Também funciona dessa maneira! Mas, só nas contas de *Subtração*!
+
+Adição em JavaScript
+
+console.log(1 + 1);
+console.log(25 + 30);
+
+console.log("Dener" + "Troquatte"); // Ou ("Dener " + "Troquatte");
+console.log("Nome:" + "Daniel Larusso" + ", " + "idade: " + 60); //Se colocar assim 60 + 2, ele irá ler errado, então para dar certo, deve ficar assim (60+2).
+console.log("Ganhador:" + "Johnny Lawrence" + ", " + "Em qual ano: " + (1970 + 10));
+
+Multiplicação e Divisão em JavaScript
+
+console.log(50 * 10);
+console.log(40 * 60);
+
+console.log(50 / 10);
+console.log(40 / 60);
